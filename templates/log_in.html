@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In - Students' Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Log In</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+</div>
+{% endblock %}

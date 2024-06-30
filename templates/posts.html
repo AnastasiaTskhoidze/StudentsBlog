@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts - Students' Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Posts</h1>
+    <a href="/submit_post" class="btn btn-primary mb-4">Create New Post</a>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.excerpt }}</p>
+                    <a href="/post/{{ post.id }}" class="btn btn-primary">Read More</a>
+                    {% if current_user.role == 'Admin' %}
+                    <a class="btn btn-danger delete-post-btn" href="/delete_post/{{post['id']}}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

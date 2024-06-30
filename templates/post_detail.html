@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - Students' Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ post.title }}</h1>
+            <div>{{ post.content }}</div>
+
+            <h2>Comments</h2>
+            <ul>
+                {% for comment in comments %}
+                <li>
+                    {{ comment.content }} (by {{ comment.user.username }})
+                </li>
+                {% endfor %}
+            </ul>
+
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.content.label(class="form-label") }}
+                    {{ form.content(class="form-control") }}
+                    <br>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
